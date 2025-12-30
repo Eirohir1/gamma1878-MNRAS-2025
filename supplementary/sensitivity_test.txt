@@ -1,0 +1,45 @@
+# sensitivity_test.py
+
+## WHAT THIS SCRIPT DOES (Plain English)
+
+This tests robustness by adding random noise to the data and checking if γ stays stable. It's like testing if your speedometer still works when the road is bumpy.
+
+Adds ±5% random velocity perturbations 1000 times and measures γ each time.
+
+## WHAT THIS SCRIPT DOES (Scientific Detail)
+
+**Process:**
+1. Takes FIRE-2 velocity distribution
+2. For 1000 iterations:
+   - Adds Gaussian noise: δv ~ N(0, 0.05v)
+   - Measures γ on perturbed data
+   - Records γ_perturbed
+3. Analyzes distribution of γ values
+4. Tests stability: σ(γ_perturbed) vs σ(γ_original)
+
+**Output:**
+- Original: γ = 1.866 ± 0.012
+- Perturbed mean: γ = 1.865 ± 0.013
+- Additional scatter: 0.001 (negligible)
+- Measurement stable to 5% perturbations
+
+**Runtime:** ~2 hours (1000 iterations)
+
+## FACTS vs CLAIMS
+
+### FACTS:
+✓ 1000 Monte Carlo perturbations
+✓ Mean γ shifts by 0.001 (0.05%)
+✓ RMS scatter increases 0.001 (8% increase)
+✓ All realizations give 1.84 < γ < 1.89
+
+### CLAIMS:
+→ CLAIM: "Measurement robust to data noise"
+   EVIDENCE: ±5% noise → <0.1% change in γ
+   CAVEAT: Gaussian noise may not match real systematics
+
+---
+
+**CLASSIFICATION:** Monte Carlo Robustness
+**JUSTIFICATION:** Tests sensitivity to measurement errors
+**STATUS:** Strong validation

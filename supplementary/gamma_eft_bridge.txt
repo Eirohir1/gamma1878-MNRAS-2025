@@ -1,0 +1,44 @@
+# gamma_eft_bridge.py
+
+## WHAT THIS SCRIPT DOES (Plain English)
+
+This derives the connection between γ = 1.878 and Tsallis non-extensive statistics using effective field theory formalism. It's building theoretical bridge between observed power-law and statistical mechanics.
+
+**WARNING:** Mathematical framework only, physical justification lacking.
+
+## WHAT THIS SCRIPT DOES (Scientific Detail)
+
+**Process:**
+1. Starts with Tsallis q-Gaussian distribution
+2. Power-law tail: P(v) ∝ v^(-(1+q)) for large v
+3. Identifies: γ = 1 + q
+4. For γ = 1.878: q = 0.878
+5. Connects to escort probabilities and generalized entropy
+
+**Output:**
+- Formal derivation: γ = 1 + q
+- Tsallis parameter: q = 0.878
+- Escort distribution framework
+
+**Runtime:** <1 minute (analytical)
+
+## FACTS vs CLAIMS
+
+### FACTS:
+✓ Tsallis q-Gaussian has power-law tail with exponent -(1+q)
+✓ If γ = 1 + q, then q = 0.878 for γ = 1.878
+✓ Mathematics is correct
+
+### CLAIMS (SPECULATIVE):
+→ CLAIM: "Tsallis statistics apply to dark matter"
+   EVIDENCE: Power-law observed (but many causes possible)
+
+→ CLAIM: "q = 0.878 is fundamental parameter"
+   EVIDENCE: Fits observed γ (but no physical derivation)
+
+---
+
+**CLASSIFICATION:** Theoretical Framework (Option B)
+**JUSTIFICATION:** Mathematical connection established, physical meaning unclear
+**STATUS:** Framework only, needs physical justification
+**PUBLICATION:** ✗ NOT for Option A (too speculative)

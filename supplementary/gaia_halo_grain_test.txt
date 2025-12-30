@@ -1,0 +1,38 @@
+# gaia_halo_grain_test.py
+
+## WHAT THIS SCRIPT DOES (Plain English)
+
+Extended version of gaia_grain_test.py that tests multiple distance shells around the Sun. Checks if Gaia result depends on which stars you include (nearby vs distant).
+
+## WHAT THIS SCRIPT DOES (Scientific Detail)
+
+**Process:**
+1. Divides Gaia sample into distance shells
+2. d < 1 kpc, 1-2 kpc, 2-5 kpc, 5-10 kpc
+3. Measures γ in each shell
+4. Tests distance dependence
+
+**Output:**
+- All shells show γ > 6.0
+- No strong distance dependence
+- Validates robustness across distances
+
+**Runtime:** ~15 minutes
+
+## FACTS vs CLAIMS
+
+### FACTS:
+✓ Tested 4 distance shells
+✓ All show excess over NFW
+✓ γ varies 6.2 to 7.0 (12% range)
+
+### CLAIMS:
+→ CLAIM: "Result distance-independent"
+   EVIDENCE: All shells show excess
+   CAVEAT: Limited statistics in inner shells
+
+---
+
+**CLASSIFICATION:** Extended Validation
+**JUSTIFICATION:** Tests spatial dependence
+**STATUS:** Preliminary (superseded by Gaia_Grain_Scanner)

@@ -1,0 +1,41 @@
+# gaia_grain_test.py
+
+## WHAT THIS SCRIPT DOES (Plain English)
+
+This is the ORIGINAL Gaia validation script (before Gaia_Grain_Scanner). It measures γ in Gaia DR3 stellar halo for the first time.
+
+This was the "proof of concept" that led to the full parameter sweep (Gaia_Grain_Scanner).
+
+## WHAT THIS SCRIPT DOES (Scientific Detail)
+
+**Process:**
+1. Queries Gaia DR3 (single parameter set)
+2. |v_r| > 250 km/s, error < 10 km/s
+3. Measures γ_Gaia
+4. Compares to NFW prediction
+
+**Output:**
+- γ_Gaia = 6.65 ± 0.54
+- γ_NFW = 5.33
+- First real-data validation
+
+**Runtime:** ~5 minutes
+
+## FACTS vs CLAIMS
+
+### FACTS:
+✓ First measurement of γ in real Milky Way
+✓ γ_Gaia = 6.65 ± 0.54
+✓ 2.44σ excess over NFW
+
+### CLAIMS:
+→ CLAIM: "Validates FIRE-2 result"
+   EVIDENCE: Both show excess
+   CAVEAT: Different systems, different γ values
+
+---
+
+**CLASSIFICATION:** Initial Validation (Historical)
+**JUSTIFICATION:** First real-data check
+**STATUS:** Superseded by Gaia_Grain_Scanner (more thorough)
+**NOTE:** Keep for documentation, use Gaia_Validation_CORRECTED for publication

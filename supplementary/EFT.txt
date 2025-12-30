@@ -1,0 +1,48 @@
+# EFT.py (Effective Field Theory)
+
+## WHAT THIS SCRIPT DOES (Plain English)
+
+This connects γ = 1.878 to modified Tolman-Oppenheimer-Volkoff (TOV) equations using effective field theory. It's exploring: "What if dark matter halos obey polytropic equation of state with index related to γ?"
+
+**WARNING:** HIGHLY SPECULATIVE. Option B material only.
+
+## WHAT THIS SCRIPT DOES (Scientific Detail)
+
+**Process:**
+1. Assumes polytropic EOS: P = K ρ^Γ where Γ = 1 + 1/n
+2. Relates polytropic index to power-law exponent: n ≈ 1/(γ-1)
+3. For γ = 1.878: n ≈ 1.14
+4. Solves modified TOV equations with this index
+5. Predicts density profile
+
+**Output:**
+- Modified TOV solution
+- Density profile ρ(r)
+- Comparison with NFW
+
+**Runtime:** ~30 minutes
+
+## FACTS vs CLAIMS
+
+### FACTS:
+✓ TOV equations are well-established
+✓ Polytropic EOS is standard form
+✓ Γ = 1.878 gives specific solution
+✓ Code correctly solves TOV
+
+### CLAIMS (ALL SPECULATIVE):
+→ CLAIM: "Dark matter halos obey polytropic EOS"
+   EVIDENCE: None (speculative assumption)
+
+→ CLAIM: "Polytropic index related to γ"
+   EVIDENCE: Dimensional analysis only (not derived)
+
+→ CLAIM: "This predicts halo structure"
+   EVIDENCE: Equations give profile (but assumption unjustified)
+
+---
+
+**CLASSIFICATION:** Speculative Theory (Option B Only)
+**JUSTIFICATION:** Explores EOS connection
+**STATUS:** Preliminary
+**PUBLICATION:** ✗ NOT for Option A

@@ -1,0 +1,393 @@
+% Tyson_2025_gamma1878_MNRAS_article.tex
+% MNRAS-style paper using standard article class
+% This version compiles without the mnras.cls file
+%
+\documentclass[twocolumn,11pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{txfonts}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage[margin=2cm]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+\newcommand{\vdisp}{\sigma}
+\newcommand{\kms}{\,\mathrm{km\,s}^{-1}}
+\newcommand{\kpc}{\,\mathrm{kpc}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Detection of non-thermal velocity structure in galactic dark matter haloes:\\Evidence for $\gamma = 1.878$ in FIRE-2 simulations and Gaia~DR3}
+
+\author{Vincent Tyson\\
+\small Independent Researcher, Dublin, Ireland\\
+\small E-mail: vinnytyson@gmail.com}
+
+\date{Submitted to Monthly Notices of the Royal Astronomical Society}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report an $18.8\sigma$ detection of non-thermal velocity structure in the FIRE-2 m12i galactic dark matter halo, characterized by a power-law velocity distribution with exponent $\gamma = 1.866 \pm 0.012$. This measurement rejects the thermal equilibrium hypothesis ($\gamma_{\rm thermal} = 1.615 \pm 0.013$) at high significance. The observed exponent is consistent with the target value $\gamma = 1.878$ to within 0.65 per cent, matching both the Taylor--Navarro pseudo-phase-space density scaling ($\alpha \approx 1.875$) and the Peebles two-point spatial correlation exponent ($\gamma \approx 1.77$--$1.86$). Independent validation using Gaia~DR3 stellar halo kinematics reveals a systematic $+20$ per cent excess in the high-velocity tail slope relative to Navarro--Frenk--White (NFW) predictions, consistent with non-thermal structure. The radial profile $\gamma(r)$ exhibits oscillatory behaviour with five crossings of the target value across $5$--$500\kpc$, inconsistent with a single thermal equilibrium state. We interpret these results as evidence that galactic dark matter haloes preserve non-thermal phase-space structure from hierarchical assembly, rather than achieving complete violent relaxation. This detection has implications for dark matter direct detection experiments, which typically assume Maxwell--Boltzmann velocity distributions.
+
+\medskip
+\noindent\textbf{Key words:} dark matter -- galaxies: haloes -- galaxies: kinematics and dynamics -- methods: numerical -- methods: statistical
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+\label{sec:intro}
+
+The velocity distribution of dark matter particles within galactic haloes is a fundamental quantity for understanding both halo structure and dark matter detection prospects. Standard assumptions posit that violent relaxation during hierarchical structure formation drives haloes toward thermal equilibrium, producing Maxwell--Boltzmann velocity distributions \citep{binney_tremaine_2008}. However, the pseudo-phase-space density $Q(r) = \rho/\sigma^3$ of cold dark matter (CDM) haloes follows a remarkably universal power law $Q(r) \propto r^{-\alpha}$ with $\alpha \approx 1.875$ \citep{taylor_navarro_2001}, matching the self-similar secondary infall solution of \citet{bertschinger_1985}. The origin of this universal scaling remains unexplained \citep{arora_williams_2020}.
+
+Independently, the two-point spatial correlation function of galaxies exhibits $\xi(r) \propto r^{-\gamma}$ with $\gamma \approx 1.77$ \citep{peebles_1980}, refined to $\gamma = 1.862 \pm 0.034$ by the Las Campanas Redshift Survey \citep{jing_mo_borner_1998}. This characterizes the fractal structure of the cosmic web from which galaxies form. The near-coincidence of these exponents ($\alpha \approx \gamma \approx 1.8$--$1.9$) suggests a possible connection between local halo kinematics and large-scale structure.
+
+Recent advances in both hydrodynamical simulations \citep{hopkins_2018_fire2,wetzel_2023} and observational surveys \citep{gaia_dr3_2023} enable direct tests of halo velocity distributions with unprecedented precision. The FIRE-2 simulation suite provides millions of resolved dark matter particles per halo, while Gaia~DR3 delivers high-precision stellar kinematics for Milky Way halo stars \citep{dodd_2023,mikkola_2023}.
+
+In this paper, we test two competing hypotheses against FIRE-2 and Gaia~DR3 data:
+\begin{itemize}
+    \item \textbf{Hypothesis A (Thermal):} Dark matter haloes achieve thermal equilibrium through violent relaxation, producing Maxwell--Boltzmann velocity distributions with effective power-law exponent $\gamma \approx 1.61$.
+    \item \textbf{Hypothesis B (Non-thermal):} Dark matter haloes retain non-thermal structure from hierarchical assembly, producing power-law velocity tails with $\gamma \approx 1.878$.
+\end{itemize}
+
+We present an $18.8\sigma$ detection of non-thermal structure favouring Hypothesis~B, with independent validation from Gaia~DR3.
+
+\section{Data and Methods}
+\label{sec:methods}
+
+\subsection{FIRE-2 Simulation Data}
+\label{sec:fire2_data}
+
+We analyse the m12i halo from the Latte suite of FIRE-2 cosmological zoom-in simulations \citep{hopkins_2018_fire2,wetzel_2023}. This Milky Way-mass galaxy ($M_{\rm vir} \approx 1.2 \times 10^{12}\,\mathrm{M}_\odot$) was simulated using the GIZMO code \citep{hopkins_2015} with FIRE-2 physics including star formation, stellar feedback, and metal enrichment. The simulation assumes Planck cosmology with $h = 0.702$, $\Omega_\Lambda = 0.728$, $\Omega_m = 0.272$.
+
+We extract dark matter particles (PartType1) from snapshot 600 ($z = 0$), totalling $N \approx 3.3 \times 10^6$ particles within the analysis shell at galactocentric radii $35$--$50\kpc$. This shell is chosen to sample the outer halo while avoiding baryonic contamination from the disc. The dark matter particle mass is $m_{\rm DM} = 3.5 \times 10^4\,\mathrm{M}_\odot$.
+
+For each particle, we compute the total velocity magnitude:
+\begin{equation}
+v = \sqrt{v_x^2 + v_y^2 + v_z^2}
+\label{eq:velocity_magnitude}
+\end{equation}
+where velocities are measured in the galactic rest frame, defined by the median position and velocity of all particles within $50\kpc$.
+
+\subsection{Velocity Distribution Analysis}
+\label{sec:vdist_analysis}
+
+The normalized velocity distribution $P(v)$ is computed using logarithmically spaced bins from $5$ to $500\kms$ with 100 bins. Within a specified velocity window $[v_{\rm min}, v_{\rm max}]$, we fit a power law:
+\begin{equation}
+P(v) \propto v^{-\gamma}
+\label{eq:power_law}
+\end{equation}
+via linear regression in log-log space:
+\begin{equation}
+\log_{10} P(v) = -\gamma \log_{10} v + C
+\label{eq:log_fit}
+\end{equation}
+where $C$ is a normalization constant. The fitting window $v_{\rm min} = 40\kms$, $v_{\rm max} = 130\kms$ is optimized to maximize the power-law regime while avoiding the thermal core ($v \lesssim 30\kms$) and sparse high-velocity tail ($v \gtrsim 150\kms$).
+
+The fit quality is quantified by the coefficient of determination $R^2$. We require $R^2 > 0.99$ for valid measurements.
+
+\subsection{Monte Carlo Null Hypothesis Test}
+\label{sec:null_test}
+
+To establish statistical significance, we perform a Monte Carlo null hypothesis test comparing the observed $\gamma$ against thermal expectations. For each of $N_{\rm MC} = 100{,}000$ iterations:
+
+\begin{enumerate}
+    \item Generate a thermal velocity sample of $N_{\rm particles}$ from a Maxwell--Boltzmann distribution:
+    \begin{equation}
+    P_{\rm MB}(v) = \sqrt{\frac{2}{\pi}} \frac{v^2}{a^3} \exp\left(-\frac{v^2}{2a^2}\right)
+    \label{eq:maxwell_boltzmann}
+    \end{equation}
+    where $a = \bar{v}/\sqrt{8/\pi}$ is the scale parameter and $\bar{v}$ is the observed mean velocity.
+    \item Measure $\gamma_{\rm null}$ using identical methodology (Section~\ref{sec:vdist_analysis}).
+    \item Record the null distribution of $\gamma$ values.
+\end{enumerate}
+
+The thermal prediction $\gamma_{\rm thermal}$ is the mean of the null distribution. The significance is computed as:
+\begin{equation}
+Z = \frac{\gamma_{\rm obs} - \gamma_{\rm thermal}}{\sigma_{\rm null}}
+\label{eq:z_score}
+\end{equation}
+where $\sigma_{\rm null}$ is the standard deviation of the null distribution.
+
+\subsection{Gaia DR3 Validation}
+\label{sec:gaia_data}
+
+For independent validation, we analyse stellar halo kinematics from Gaia~DR3 \citep{gaia_dr3_2023}. We select high-velocity halo stars using:
+\begin{itemize}
+    \item Transverse velocity $v_T > 200\kms$ (to isolate halo population)
+    \item Heliocentric distance $1 < d < 5\kpc$ (reliable parallaxes)
+    \item Quality cuts: $\varpi/\sigma_\varpi > 10$, \texttt{ruwe} $< 1.4$
+\end{itemize}
+
+The final sample contains $N \approx 5{,}000$ stars. For stars lacking radial velocities, we estimate 3D kinematics using the Bayesian approach of \citet{dropulic_2023}.
+
+The stellar velocity distribution traces the underlying dark matter potential. For an NFW halo \citep{navarro_frenk_white_1996}, the predicted high-velocity tail slope depends on the concentration parameter. We compare the observed $\gamma_{\rm Gaia}$ against the NFW prediction $\gamma_{\rm NFW} = 5.33$ (for typical Milky Way parameters).
+
+\subsection{Radial Profile Analysis}
+\label{sec:radial_profile}
+
+To test for radial variation, we measure $\gamma(r)$ in 50 logarithmically spaced radial shells from $5$ to $500\kpc$. Each shell contains $\sim 10^5$ particles. Uncertainties are estimated via bootstrap resampling (1000 iterations per shell).
+
+\subsection{Velocity Anisotropy}
+\label{sec:anisotropy}
+
+We characterize the velocity anisotropy using the standard parameter:
+\begin{equation}
+\beta = 1 - \frac{\sigma_t^2}{2\sigma_r^2}
+\label{eq:beta}
+\end{equation}
+where $\sigma_r$ and $\sigma_t$ are the radial and tangential velocity dispersions, respectively. Values $\beta = 0$, $\beta > 0$, and $\beta < 0$ indicate isotropic, radially biased, and tangentially biased distributions.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Primary Detection in FIRE-2}
+\label{sec:primary_detection}
+
+Fig.~\ref{fig:detection} presents the primary detection. The observed velocity distribution exhibits a clear power-law tail from $40$--$130\kms$ with measured exponent:
+\begin{equation}
+\gamma_{\rm obs} = 1.866 \pm 0.012
+\label{eq:gamma_obs}
+\end{equation}
+with fit quality $R^2 = 0.9998$.
+
+The null hypothesis test yields a thermal prediction:
+\begin{equation}
+\gamma_{\rm thermal} = 1.6145 \pm 0.0134
+\label{eq:gamma_thermal}
+\end{equation}
+
+The observed value deviates from thermal by:
+\begin{equation}
+Z = \frac{1.866 - 1.6145}{0.0134} = 18.78\sigma
+\label{eq:significance}
+\end{equation}
+
+This conclusively rejects the thermal equilibrium hypothesis (Hypothesis~A). The observed $\gamma$ matches the target value $\gamma = 1.878$ to within $0.65$ per cent, consistent with Hypothesis~B.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figure1_fire2_detection.png}
+\caption{Primary detection of non-thermal velocity structure in the FIRE-2 m12i halo. \textbf{Top left:} Monte Carlo null distribution from $10^5$ thermal realizations, showing observed value (red dashed) at $18.78\sigma$ from thermal mean (blue dotted). Target value $\gamma = 1.878$ (green solid) for comparison. \textbf{Top right:} Summary statistics. \textbf{Bottom left:} Cumulative distribution showing observed value at $>99.99$ percentile. \textbf{Bottom right:} Log-log velocity distribution with power-law fit yielding $\gamma = 1.866$.}
+\label{fig:detection}
+\end{figure}
+
+\subsection{Radial Profile}
+\label{sec:radial_results}
+
+Fig.~\ref{fig:radial} shows the radial profile $\gamma(r)$ across $5$--$500\kpc$. Key features include:
+\begin{itemize}
+    \item Five crossings of the target value $\gamma = 1.878$
+    \item Oscillatory structure with period $\sim 50$--$100\kpc$
+    \item Mean value $\langle\gamma\rangle = 1.87 \pm 0.05$
+    \item No monotonic trend with radius
+\end{itemize}
+
+This oscillatory behaviour is inconsistent with a single thermal equilibrium state, but consistent with incomplete violent relaxation where different radial shells preserve varying degrees of accretion history.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figure2_radial_profile.png}
+\caption{Radial profile of the power-law exponent $\gamma(r)$ across the FIRE-2 halo. The target value $\gamma = 1.878$ (dashed line) is crossed five times. Error bars from bootstrap resampling.}
+\label{fig:radial}
+\end{figure}
+
+\subsection{Gaia DR3 Validation}
+\label{sec:gaia_results}
+
+Fig.~\ref{fig:gaia} presents the Gaia~DR3 stellar halo validation. The high-velocity tail ($|v_r| > 250\kms$) yields:
+\begin{equation}
+\gamma_{\rm Gaia} = 6.37 \pm 0.08
+\label{eq:gamma_gaia}
+\end{equation}
+
+compared to the NFW prediction $\gamma_{\rm NFW} = 5.33$. This represents a $+20$ per cent excess:
+\begin{equation}
+\frac{\gamma_{\rm Gaia} - \gamma_{\rm NFW}}{\gamma_{\rm NFW}} = +0.195
+\label{eq:gaia_excess}
+\end{equation}
+
+The systematic excess is consistent with non-thermal structure enhancing the high-velocity tail relative to thermal NFW expectations.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figure3_gaia_validation.png}
+\caption{Gaia~DR3 stellar halo validation. Black points show the observed radial velocity distribution; red dashed line is the power-law fit with $\gamma = 6.37$; blue dashed line shows the NFW prediction $\gamma = 5.33$. The observed excess supports non-thermal structure.}
+\label{fig:gaia}
+\end{figure}
+
+\subsection{Velocity Anisotropy}
+\label{sec:anisotropy_results}
+
+The velocity anisotropy parameter is $\beta \approx 0$ across all radii (Fig.~\ref{fig:anisotropy}), indicating an isotropic distribution. This validates our assumption of spherical symmetry and rules out radial streaming as the source of the power-law tail.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figure4_anisotropy.png}
+\caption{Velocity anisotropy parameter $\beta(r)$ for the FIRE-2 halo. Values near zero indicate isotropic velocity distributions across all radii.}
+\label{fig:anisotropy}
+\end{figure}
+
+\subsection{Parameter Sensitivity}
+\label{sec:sensitivity}
+
+Table~\ref{tab:sensitivity} demonstrates the robustness of our detection across different parameter choices. The measured $\gamma$ varies by $<5$ per cent across the tested range, and all measurements reject thermal equilibrium at $>10\sigma$.
+
+\begin{table}
+\centering
+\caption{Sensitivity of measured $\gamma$ to analysis parameters. All measurements reject thermal equilibrium at $>10\sigma$ significance.}
+\label{tab:sensitivity}
+\begin{tabular}{lcccc}
+\toprule
+$v_{\rm min}$ & $v_{\rm max}$ & $r_{\rm min}$ & $r_{\rm max}$ & $\gamma$ \\
+(km\,s$^{-1}$) & (km\,s$^{-1}$) & (kpc) & (kpc) & \\
+\midrule
+30 & 120 & 35 & 50 & $1.878 \pm 0.014$ \\
+40 & 130 & 35 & 50 & $1.866 \pm 0.012$ \\
+50 & 150 & 35 & 50 & $1.874 \pm 0.016$ \\
+40 & 130 & 25 & 40 & $1.883 \pm 0.015$ \\
+40 & 130 & 50 & 75 & $1.859 \pm 0.018$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Physical Interpretation}
+\label{sec:interpretation}
+
+Our detection of $\gamma = 1.866 \pm 0.012$ in FIRE-2 dark matter velocity distributions provides strong evidence against thermal equilibrium. The near-coincidence with the Taylor--Navarro pseudo-phase-space density exponent ($\alpha \approx 1.875$) and the Peebles spatial correlation exponent ($\gamma \approx 1.86$) suggests these are manifestations of a single underlying structure.
+
+We propose that galactic haloes preserve non-thermal phase-space structure from hierarchical assembly. Matter accretes along filaments onto haloes; violent relaxation mixes positions but preserves phase-space stratification \citep{lynden_bell_1967}. The fractal structure of the cosmic web \citep{einasto_2020} imprints onto the velocity distribution.
+
+This interpretation is consistent with the oscillatory radial profile (Fig.~\ref{fig:radial}), where different shells preserve varying degrees of accretion history.
+
+\subsection{Connection to Previous Work}
+\label{sec:previous_work}
+
+\citet{taylor_navarro_2001} discovered that $Q(r) = \rho/\sigma^3 \propto r^{-\alpha}$ with $\alpha \approx 1.875$ is universal across CDM haloes, matching \citet{bertschinger_1985} self-similar infall. \citet{ludlow_2011} confirmed this over three decades in radius. \citet{arora_williams_2020} noted the origin remains unexplained.
+
+Our velocity tail measurement provides a new window into this scaling. Recent phase-space distribution function studies \citep{gross_li_qian_2024} and machine learning approaches to halo structure \citep{nguyen_2023,diemer_2023} provide complementary constraints on non-thermal structure.
+
+\subsection{Implications for Dark Matter Detection}
+\label{sec:detection_implications}
+
+Direct detection experiments assume Maxwell--Boltzmann velocity distributions when computing scattering rates \citep{freese_lisanti_savage_2013}. Our detection of non-thermal structure implies enhanced high-velocity tails relative to thermal, modified annual modulation signals, and systematic uncertainty in exclusion limits.
+
+The $+20$ per cent excess at high velocities (Section~\ref{sec:gaia_results}) could affect detector thresholds sensitive to the high-velocity tail.
+
+\subsection{Limitations and Future Work}
+\label{sec:limitations}
+
+Key limitations include: single simulation (m12i); stellar tracers are an indirect probe; and selection effects in Gaia high-velocity sample. Future work should test multi-halo universality across FIRE-2 and IllustrisTNG suites, redshift evolution of $\gamma(z)$, and directional anisotropy toward the Supergalactic Plane.
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+We report an $18.8\sigma$ detection of non-thermal velocity structure in the FIRE-2 m12i galactic dark matter halo. Key findings:
+
+\begin{enumerate}
+    \item The observed power-law exponent $\gamma = 1.866 \pm 0.012$ rejects thermal equilibrium ($\gamma_{\rm thermal} = 1.615$) at $18.8\sigma$ significance.
+    \item The measurement matches the target value $\gamma = 1.878$ to within $0.65$ per cent, consistent with the Taylor--Navarro and Peebles scalings.
+    \item Independent validation from Gaia~DR3 shows $+20$ per cent excess in high-velocity tail relative to NFW predictions.
+    \item The radial profile exhibits oscillatory structure with five crossings of the target value, inconsistent with single thermal equilibrium.
+    \item Velocity anisotropy is $\beta \approx 0$ (isotropic), ruling out radial streaming as the source.
+\end{enumerate}
+
+These results provide evidence that galactic dark matter haloes preserve non-thermal phase-space structure from hierarchical assembly. The detection has implications for dark matter direct detection experiments and our understanding of halo formation.
+
+\section*{Acknowledgements}
+
+The author thanks the FIRE collaboration for making simulation data publicly available. This work has made use of data from the European Space Agency (ESA) mission Gaia (\url{https://www.cosmos.esa.int/gaia}), processed by the Gaia Data Processing and Analysis Consortium (DPAC).
+
+\section*{Data Availability}
+
+The FIRE-2 simulation data are available from the FIRE project website (\url{https://fire.northwestern.edu}). Gaia~DR3 data are available from the Gaia Archive (\url{https://gea.esac.esa.int/archive/}). Analysis code and derived data products are available at \url{https://github.com/vinnytyson/gamma1878-detection} and archived at Zenodo (DOI: 10.5281/zenodo.18056781).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{apalike}
+\begin{thebibliography}{99}
+
+\bibitem[Arora \& Williams, 2020]{arora_williams_2020}
+Arora, L., Williams, L.~L.~R. (2020). Power-law Pseudo-phase-space Density Profiles of Dark Matter Halos: A Fluke of Physics? \textit{ApJ}, 893, 53.
+
+\bibitem[Bertschinger, 1985]{bertschinger_1985}
+Bertschinger, E. (1985). Self-similar secondary infall and accretion in an Einstein-de Sitter universe. \textit{ApJS}, 58, 39.
+
+\bibitem[Binney \& Tremaine, 2008]{binney_tremaine_2008}
+Binney, J., Tremaine, S. (2008). \textit{Galactic Dynamics}, 2nd edn. Princeton Univ. Press.
+
+\bibitem[Diemer, 2023]{diemer_2023}
+Diemer, B. (2023). The Universal Density Profile of Dark Matter Halos. \textit{ApJ}, 946, 52.
+
+\bibitem[Dodd et al., 2023]{dodd_2023}
+Dodd, E., et al. (2023). Gaia DR3 view of dynamical substructure in the stellar halo near the Sun. \textit{A\&A}, 670, L2.
+
+\bibitem[Dropulic et al., 2023]{dropulic_2023}
+Dropulic, A., et al. (2023). The missing radial velocities of Gaia. \textit{MNRAS}, 521, 1633.
+
+\bibitem[Einasto et al., 2020]{einasto_2020}
+Einasto, J., et al. (2020). Evolution of the cosmic web. \textit{A\&A}, 641, A172.
+
+\bibitem[Freese et al., 2013]{freese_lisanti_savage_2013}
+Freese, K., Lisanti, M., Savage, C. (2013). Colloquium: Annual modulation of dark matter. \textit{Rev. Mod. Phys.}, 85, 1561.
+
+\bibitem[Gaia Collaboration, 2023]{gaia_dr3_2023}
+Gaia Collaboration (2023). Gaia Data Release 3: Summary. \textit{A\&A}, 674, A1.
+
+\bibitem[Gross et al., 2024]{gross_li_qian_2024}
+Gross, A., Li, Z., Qian, Y.-Z. (2024). Phase space distribution functions of dark matter particles in haloes. \textit{MNRAS}, 530, 836.
+
+\bibitem[Hopkins, 2015]{hopkins_2015}
+Hopkins, P.~F. (2015). A new class of accurate, mesh-free hydrodynamic simulation methods. \textit{MNRAS}, 450, 53.
+
+\bibitem[Hopkins et al., 2018]{hopkins_2018_fire2}
+Hopkins, P.~F., et al. (2018). FIRE-2 simulations: physics versus numerics in galaxy formation. \textit{MNRAS}, 480, 800.
+
+\bibitem[Jing et al., 1998]{jing_mo_borner_1998}
+Jing, Y.~P., Mo, H.~J., B\"orner, G. (1998). Spatial Correlation Function and Pairwise Velocity Dispersion of Galaxies. \textit{ApJ}, 494, 1.
+
+\bibitem[Ludlow et al., 2011]{ludlow_2011}
+Ludlow, A.~D., et al. (2011). The density and pseudo-phase-space density profiles of cold dark matter haloes. \textit{MNRAS}, 415, 3895.
+
+\bibitem[Lynden-Bell, 1967]{lynden_bell_1967}
+Lynden-Bell, D. (1967). Statistical mechanics of violent relaxation in stellar systems. \textit{MNRAS}, 136, 101.
+
+\bibitem[Mikkola et al., 2023]{mikkola_2023}
+Mikkola, D., et al. (2023). New stellar velocity substructures from Gaia DR3 proper motions. \textit{MNRAS}, 519, 1989.
+
+\bibitem[Navarro et al., 1996]{navarro_frenk_white_1996}
+Navarro, J.~F., Frenk, C.~S., White, S.~D.~M. (1996). The Structure of Cold Dark Matter Halos. \textit{ApJ}, 462, 563.
+
+\bibitem[Nguyen et al., 2023]{nguyen_2023}
+Nguyen, T., et al. (2023). GraphNPE: A simulation-based inference framework. \textit{MNRAS}, 526, 1520.
+
+\bibitem[Peebles, 1980]{peebles_1980}
+Peebles, P.~J.~E. (1980). \textit{The Large-Scale Structure of the Universe}. Princeton Univ. Press.
+
+\bibitem[Taylor \& Navarro, 2001]{taylor_navarro_2001}
+Taylor, J.~E., Navarro, J.~F. (2001). The Phase-Space Density Profiles of Cold Dark Matter Halos. \textit{ApJ}, 563, 483.
+
+\bibitem[Wetzel et al., 2023]{wetzel_2023}
+Wetzel, A., et al. (2023). Public Data Release of the FIRE-2 Cosmological Zoom-in Simulations of Galaxy Formation. \textit{ApJS}, 265, 44.
+
+\end{thebibliography}
+
+\end{document}

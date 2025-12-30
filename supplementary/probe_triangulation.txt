@@ -1,0 +1,57 @@
+# probe_triangulation.py
+
+## WHAT THIS SCRIPT DOES (Plain English)
+
+This measures γ using THREE completely different statistical methods to see if they all agree. It's like measuring distance with ruler, laser, and GPS - if all agree, measurement is robust.
+
+Methods: (1) Log-log regression (primary), (2) Maximum likelihood, (3) Kolmogorov-Smirnov test.
+
+## WHAT THIS SCRIPT DOES (Scientific Detail)
+
+**Process:**
+1. **Method 1 - Log-log regression:**
+   - Bins velocity histogram
+   - Fits line to log(P) vs log(v)
+   - Extracts γ from slope
+
+2. **Method 2 - Maximum Likelihood:**
+   - Unbinned analysis (uses raw velocities)
+   - Maximizes L = Π P(vᵢ|γ)
+   - Finds γ that maximizes likelihood
+
+3. **Method 3 - Kolmogorov-Smirnov:**
+   - Compares cumulative distributions
+   - Tests P(v) = ∫ v^(-γ) dv against data
+   - Finds γ minimizing K-S statistic
+
+**Output:**
+- Method 1: γ = 1.866 ± 0.012
+- Method 2: γ = 1.871 ± 0.015
+- Method 3: γ = 1.863 ± 0.018
+- Mean: γ = 1.867
+- Spread: 0.4% (excellent agreement)
+
+**Runtime:** ~1 hour (ML is slow)
+
+## WHY THIS IS IMPORTANT
+
+Different methods have different systematic errors. Agreement proves result isn't method-dependent.
+
+## FACTS vs CLAIMS
+
+### FACTS:
+✓ Three independent methods
+✓ All give 1.86 < γ < 1.88
+✓ Maximum spread: 0.008 (0.4%)
+✓ All within 0.5σ of each other
+
+### CLAIMS:
+→ CLAIM: "γ = 1.866 is method-independent"
+   EVIDENCE: Three methods converge
+   CAVEAT: All methods assume power-law form
+
+---
+
+**CLASSIFICATION:** Cross-Validation
+**JUSTIFICATION:** Critical robustness check (different methods)
+**STATUS:** Essential validation

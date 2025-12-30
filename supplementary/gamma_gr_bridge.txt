@@ -1,0 +1,43 @@
+# gamma_gr_bridge.py
+
+## WHAT THIS SCRIPT DOES (Plain English)
+
+This explores connection between γ = 1.878 and modified general relativity through polytropic equation of state in TOV equations.
+
+**WARNING:** Most speculative of all scripts. Modified GR requires extraordinary evidence.
+
+## WHAT THIS SCRIPT DOES (Scientific Detail)
+
+**Process:**
+1. Modifies TOV equations with polytropic EOS
+2. Relates polytrope to γ via Γ = γ/(γ-1)
+3. Solves for metric modifications
+4. Tests if this reproduces observations
+
+**Output:**
+- Modified metric
+- Predictions for lensing, rotation curves
+- Comparison with standard GR + DM
+
+**Runtime:** ~1 hour
+
+## FACTS vs CLAIMS
+
+### FACTS:
+✓ Mathematics is formally correct
+✓ Modified TOV equations solvable
+
+### CLAIMS (EXTREMELY SPECULATIVE):
+→ CLAIM: "Need modified gravity"
+   EVIDENCE: None (standard GR + DM works fine)
+
+→ CLAIM: "γ = 1.878 indicates GR breakdown"
+   EVIDENCE: None (measured in simulation using standard physics!)
+
+---
+
+**CLASSIFICATION:** Highly Speculative (Option B, with extreme caution)
+**JUSTIFICATION:** Exploratory only, no physical basis
+**STATUS:** Preliminary mathematical exercise
+**PUBLICATION:** ✗ DEFINITELY NOT for Option A
+**WARNING:** Could damage credibility if presented without strong caveats
