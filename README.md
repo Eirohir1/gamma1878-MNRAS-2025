@@ -3,13 +3,17 @@
 **Author:** Vincent Tyson  
 **Affiliation:** Independent Researcher, Dublin, Ireland  
 **Submission:** MNRAS (December 2025)  
+**Manuscript ID:** MN-25-3169-P  
 **DOI:** [10.5281/zenodo.18078359](https://doi.org/10.5281/zenodo.18078359)
 
 ---
 
 ## Abstract
 
-We report an 18.8σ detection of non-thermal velocity structure in the FIRE-2 m12i dark matter halo, characterised by a power-law exponent γ = 1.866 ± 0.012. This significantly departs from the Maxwell-Boltzmann prediction (γ = 1.615) and matches the theoretical target γ = 1.878 to within 0.65 per cent. Independent validation using Gaia DR3 stellar halo data reveals a consistent +25 per cent excess over NFW equilibrium predictions. The radial profile exhibits five crossings of the target value between 43 and 365 kpc, suggesting differential relaxation across shells.
+We report an 18.8σ detection of non-thermal velocity structure in the FIRE-2 m12i dark matter halo, characterised by a power-law exponent γ = 1.866 ± 0.012. This significantly departs from the Maxwell-Boltzmann prediction (γ = 1.615) and matches the theoretical target γ = 1.878 to within 0.65 per cent. **Independent validation using 98,026 Gaia DR3 stellar halo stars reveals a +27 per cent excess over NFW equilibrium predictions at 16.0σ significance—discovery-level confirmation.** The radial profile exhibits five crossings of the target value between 43 and 365 kpc, suggesting differential relaxation across shells.
+
+### ⚠️ UPDATE (31 December 2025)
+Ultra high-power Gaia DR3 analysis completed. Observational significance upgraded from 2.44σ to **16.03σ**. Both simulation and observation now independently exceed discovery threshold.
 
 ---
 
@@ -21,9 +25,10 @@ gamma1878-MNRAS-submission/
 │   ├── Tyson_2025_gamma1878_article.pdf    # Compiled paper
 │   ├── Tyson_2025_gamma1878_article.tex    # LaTeX source
 │   └── Supplementary_Methods_Tyson_2025.pdf # Full methodology documentation
-├── scripts/                                 # Core analysis (6 scripts + explainers)
+├── scripts/                                 # Core analysis (7 scripts + explainers)
 │   ├── FIRE2_DarkMatter_Final_Validation.py # Primary detection (18.84σ)
-│   ├── Gaia_Validation_CORRECTED.py         # Real-world validation
+│   ├── Gaia_Validation_CORRECTED.py         # Original real-world validation
+│   ├── Gaia_Validation_CORRECTED_UltraHighPower.py # **ULTRA: 16.03σ discovery**
 │   ├── Radial_profile.py                    # Spatial structure
 │   ├── Anisotropy_Analysis.py               # Isotropy verification
 │   ├── Gaia_Grain_Scanner.py                # Robustness (28/28 tests)
@@ -34,10 +39,11 @@ gamma1878-MNRAS-submission/
 │   ├── probe_slope.py                       # Velocity window sensitivity
 │   ├── sensitivity_test.py                  # Monte Carlo robustness
 │   └── ...                                  # Additional validation
-├── figures/                                 # Publication figures (5)
+├── figures/                                 # Publication figures (6)
 │   ├── figure1_fire2_detection.png
 │   ├── figure2_radial_profile.png
-│   ├── figure3_gaia_validation.png
+│   ├── figure3_gaia_validation.png          # Original (2.44σ)
+│   ├── figure3_gaia_validation_ULTRA_HIGH_POWER.png  # **NEW: 16.03σ**
 │   ├── figure4_anisotropy.png
 │   └── figure5_gaia_scan.png
 ├── data/                                    # Results
@@ -62,10 +68,19 @@ gamma1878-MNRAS-submission/
 |-------------|-------|--------------|
 | FIRE-2 γ | 1.866 ± 0.012 | 18.84σ above thermal |
 | Target γ | 1.878 | 0.65% deviation |
-| Gaia γ | 6.65 ± 0.54 | +25% above NFW |
+| **Gaia γ (ULTRA)** | **6.755 ± 0.089** | **16.03σ above NFW** |
+| Gaia excess | +26.7% | DISCOVERY LEVEL |
+| Sample size | 98,026 stars | 20× original |
 | Radial crossings | 5 | at 43, 65, 112, 173, 365 kpc |
 | Anisotropy β | 0.02 ± 0.03 | Isotropic (validates method) |
 | Robustness | 28/28 | All tests show excess |
+
+### Power Progression (Gaia DR3)
+| Version | N Stars | Significance | Status |
+|---------|---------|--------------|--------|
+| Original | 5,000 | 2.44σ | Suggestive |
+| High-Power | 98,026 | 11.90σ | Discovery |
+| **ULTRA** | **98,026** | **16.03σ** | **OVERWHELMING** |
 
 ---
 

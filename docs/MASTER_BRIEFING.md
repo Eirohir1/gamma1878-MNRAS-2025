@@ -2,9 +2,11 @@
 ## Vincent Tyson - The Critical Universe Hypothesis
 ### Master Document for Session Continuity
 
-**Last Updated:** 29 December 2025  
-**Status:** Paper #1 submitted to MNRAS, Paper #2 in preparation  
+**Last Updated:** 31 December 2025  
+**Status:** Paper #1 submitted to MNRAS (MN-25-3169-P), **ULTRA HIGH-POWER UPDATE PENDING**  
 **Critical:** Taylor-Navarro (2001) prior art discovered - see Section 6
+
+**⚠️ MAJOR UPDATE 31/12/2025:** Ultra high-power Gaia analysis achieves 16.03σ significance. Observational support upgraded from "suggestive" to "discovery-level".
 
 ---
 
@@ -16,11 +18,13 @@ $$\gamma = 1.878 \pm 0.05$$
 
 This deviates from thermal (Maxwell-Boltzmann) expectations at **18.78σ significance**.
 
-### Key Result:
-| Dataset | γ measured | γ expected (thermal) | Significance |
-|---------|------------|---------------------|--------------|
-| FIRE-2 (35-50 kpc) | **1.866** | 1.6145 | **18.78σ** |
-| Gaia DR3 (1-3 kpc) | 6.65 ± 0.54 | 5.33 (NFW) | +25% excess |
+### Key Result (UPDATED):
+| Dataset | γ measured | γ expected | Significance | Status |
+|---------|------------|------------|--------------|--------|
+| FIRE-2 (35-50 kpc) | **1.866** | 1.6145 (thermal) | **18.78σ** | DISCOVERY |
+| **Gaia DR3 (ULTRA)** | **6.755 ± 0.089** | 5.33 (NFW) | **16.03σ** | **DISCOVERY** |
+
+**Both simulation AND observation now independently exceed discovery threshold (5σ).**
 
 ---
 
